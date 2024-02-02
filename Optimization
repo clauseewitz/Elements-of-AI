@@ -1,4 +1,4 @@
-#1-----------------------------------------Listing Pinaple Routes-----------------------------------------------------1#
+#1-----------------------------------------Listing Pinaple Routes, recursion-----------------------------------------------------1#
 def permutations(route, ports):
     if len(ports) < 1:
         print(' '.join([portnames[i] for i in route]))
@@ -41,23 +41,20 @@ def permutations(route, ports):
         z = 0
         count = 0
         for i in range(0,  len(route)-1):
-            x = route[i]
-            y = route[i+1]
-            cost = D[x][y]
-            z = cost +z
-            count = count +1
-            if count == (len(route) - 1):
+            x = route[i]     #current harbor
+            y = route[i+1]   #next harbor
+            cost = D[x][y]   #cost of movin from harbor x and y
+            z = cost +z      #sum cost of traveling across all 5 harbors
+            count = count +1 #check for end of loop to add the costs and harbors to lists
+            
+            if count == (len(route) - 1): #at the end of each loop, add the route and cost to lists "costs" and "routes"
                 costs.append(z)
                 routes.append(route)
     else:
         for i in range(len(ports)):
             permutations(route+[ports[i]], ports[:i]+ports[i+1:])
  
-   
-
-    # Print the port names in route when the recursion terminates
-    # remember to calculate the emissions of the route as the recursion ends
-    # and keep track of the route with the lowest emissions
+    
     
 
 def main():
@@ -65,15 +62,15 @@ def main():
 
     # this will start the recursion 
     permutations([0], list(range(1, len(portnames))))
-    smallest = min(costs) * 0.02
-    bestroute = (routes[costs.index(min(costs))])
+    smallest = min(costs) * 0.02                                                              #check smalles value in route, multiply by co2 / km
+    bestroute = (routes[costs.index(min(costs))])                                             #check whick index in routes that corresponds to the smalest value#
     # print the best route and its emissions
     print(' '.join([portnames[i] for i in bestroute]) + " %.1f kg" % smallest)
     
     
 main()
 
-#2.----------------------------------------Smoother pinaple route emissions-------------------------------------------2#
+#2.----------------------------------------Smoother pinaple route emissions(ZIP)-------------------------------------------2#
 portnames = ["PAN", "AMS", "CAS", "NYC", "HEL"]
 
 D = [
