@@ -1,1 +1,27 @@
+#--------------------------------------------------------------Probability fundamentals exercise 1-------------------------------------------------------#
+import numpy as np
 
+x = 0
+
+def generate(p1):
+    # Change this so that it generates 10000 random zeros and ones
+    # where the probability of one is p1
+    p1 = np.random.choice([0, 1], p=[1 - p1, p1], size=10000)
+    return p1
+
+def count(seq):
+    global x
+    x = 0  # Initialize x
+    for i in range(0, len(seq) - 4):  # Adjust the loop range to avoid index out of range
+        if seq[i] and seq[i+1] and seq[i+2] and seq[i+3] and seq[i+4] == 1:
+            x = x + 1
+    return x
+
+def main(p1):
+    seq = generate(p1)
+    return count(seq)
+
+print(main(2/3))
+
+
+#-------------------------------------------------------Probability fundamentals exercise 2----------------------------------------------------------------#
