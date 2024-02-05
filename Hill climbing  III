@@ -1,5 +1,5 @@
 #-------------------------------Hill climbing( exercise 3-6)-----------------------------------------#
-#-------------------------------Execrise 3 ----------------------------------------------------------#
+#-------------------------------Execrise 3 Climb to highest point within +- 5 steps------------------#
 import math
 import random             	# just for generating random mountains                                 	 
 
