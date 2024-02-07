@@ -1,0 +1,22 @@
+#-----------------------------------Exercise 11 Price of a house-----------------------------------------#
+# input values for three mökkis: size, size of sauna, distance to water, number of indoor bathrooms, 
+# proximity of neighbors
+X = [[66, 5, 15, 2, 500],[21, 3, 50, 1, 100],[120, 15, 5, 2, 1200]]
+c = [3000, 200, -50, 5000, 100]    # coefficient values
+def countList(lst):
+    return sum(type(el)== type([]) for el in lst)
+
+def predict(X, c):
+    price = 0
+    Y = countList(X)
+    
+    
+    for i in range(Y):
+        price = 0
+        z = len(X[i])
+        for j in range(z):
+            price = price + c[j]*X[i][j]
+           
+        print(price)     
+    
+predict(X, c)
